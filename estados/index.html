@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda con DFS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        input[type="text"], button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Busqueda con DFS</h1>
+    <label for="estadoInicial">Estado Inicial:</label>
+    <input type="text" id="estadoInicial" value="EDO.MEX">
+    <label for="solucion">Solución:</label>
+    <input type="text" id="solucion" value="HIDALGO">
+    <button onclick="buscarSolucion()">Buscar</button>
+    <div id="result"></div>
+
+    <script>
+        function buscarSolucion() {
+            var estadoInicial = document.getElementById("estadoInicial").value;
+            var solucion = document.getElementById("solucion").value;
+            // Aquí puedes hacer una llamada AJAX para enviar el estado inicial y la solución al servidor y obtener el resultado del algoritmo DFS
+            // Por simplicidad, en este ejemplo, simplemente imprimimos el resultado en la página
+            var resultado = ["EDO.MEX", "SLP", "HIDALGO"]; // Aquí debes colocar el resultado obtenido del algoritmo DFS
+            mostrarResultado(resultado);
+        }
+
+        function mostrarResultado(resultado) {
+            var resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = "<h2>Resultado:</h2>";
+            if (resultado.length > 0) {
+                var ul = document.createElement("ul");
+                resultado.forEach(function(estado) {
+                    var li = document.createElement("li");
+                    li.textContent = estado;
+                    ul.appendChild(li);
+                });
+                resultContainer.appendChild(ul);
+            } else {
+                resultContainer.innerHTML += "<p>No se encontró solución.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
